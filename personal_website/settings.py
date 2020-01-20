@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	# once you have created an app, you need to install it in your project
-	# adding this line (which is the path to the app directory)
+	# Once you have created an app, you need to install it in your project
+	# adding this line (path to the app directory)
 	'apps.hello_world',
 ]
 
@@ -57,7 +57,8 @@ ROOT_URLCONF = 'personal_website.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+		# We need to tell Django that we created the base.html file in a new directory called 'templates'.
+        'DIRS': ['personal_website/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
