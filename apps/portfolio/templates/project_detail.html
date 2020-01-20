@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+<h1>{{ project.title }}</h1>
+<div class="row">
+    <div class="col-md-8">
+        <img src="{% static project.preview_image %}" alt="" width="100%">
+    </div>
+    <div class="col-md-4">
+        <h5>About the project:</h5>
+        <p>{{ project.description }}</p>
+        <br>
+        <h5>Project link <a href="{{ project.reference_link }}">here</a></h5>
+    </div>
+</div>
+{% endblock %}
+
+<!--
+
+On line 8, we include our project image. Inside the src attribute, we add the
+code {% static project.preview_image %}. This tells Django to look inside the
+static files to find a file matching project.preview_image value.
+
+-->
