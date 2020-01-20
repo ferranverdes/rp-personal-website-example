@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+	# once you have created an app, you need to install it in your project
+	# adding this line (which is the path to the app directory)
+	'apps.hello_world',
 ]
 
 MIDDLEWARE = [
