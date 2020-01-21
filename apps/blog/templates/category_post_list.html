@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<div class="col-md-8 offset-md-2">
+    <h1>Category: {{ category | title }}</h1>
+    <hr>
+    {% for post in posts %}
+        <h2><a href="{% url 'post_detail' post.pk%}">{{ post.title }}</a></h2>
+        <small>
+            {{ post.created_on.date }} |&nbsp;
+            Categories:&nbsp;
+            {% for category in post.categories.all %}
+            <a href="{% url 'category_post_list' category.name %}">
+                {{ category.name }}
+            </a>&nbsp;
+            {% endfor %}
+        </small>
+        <p>{{ post.body | slice:":400" }}...</p>
+    {% endfor %}
+</div>
+{% endblock %}
+
+<!--
+
+On line 5, where we use another Django template filter title. This applies titlecase
+to the string and makes words start with an uppercase character.
+
+-->
