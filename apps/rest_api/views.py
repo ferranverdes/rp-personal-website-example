@@ -56,10 +56,10 @@ class PostView(viewsets.ViewSet):
 
 	def destroy(self, request, pk=None):
 		"""HTTP DELETE /posts/<int:pk>"""
-		if models.Post.objects.filter(pk=pk).exists():
-			post = models.Post.objects.get(pk=pk)
-			post.delete()
-			return Response(status=status.HTTP_204_NO_CONTENT)
+		# if models.Post.objects.filter(pk=pk).exists():
+		#	post = models.Post.objects.get(pk=pk)
+		#	post.delete()
+		#	return Response(status=status.HTTP_204_NO_CONTENT)
 		return Response(status=status.HTTP_404_NOT_FOUND)
 
 # Way 2 (using APIView)
