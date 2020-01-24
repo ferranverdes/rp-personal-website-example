@@ -1,7 +1,9 @@
 from django.test import TestCase
 from django.urls import reverse
+from django.contrib.auth.models import User
 from rest_framework.test import APITestCase, APIClient
 from rest_framework import status
+from rest_framework.authtoken.models import Token
 from apps.rest_api import views, models, serializers
 
 class PostViewTest(APITestCase):
@@ -15,6 +17,16 @@ class PostViewTest(APITestCase):
 	def setUp(self):
 		# This method is called before each test method is executed.
 
+		# Create a user for auth requests
+		self.user = User.objects.create_user(
+			username='testuser',
+			email='test@example.com',
+			password='testpassword'
+		)
+		self.token = Token.objects.create(user=self.user)
+		self.auth_headers = { 'HTTP_AUTHORIZATION': f'Token {self.token}' }
+
+		# Create categories
 		animals_category = models.Category.objects.create(name='Animals')
 		education_category = models.Category.objects.create(name='Education')
 
@@ -61,7 +73,15 @@ class PostViewTest(APITestCase):
 			'categories': [category_id]
 		}
 
-		response = self.client.post(reverse('post-list'), data=post_data)
+		response = self.client.post(
+			reverse('post-list'),
+			data=post_data,
+			**self.auth_headers
+		)
+		# ** collects all the keyword arguments in a dictionary.
+		# dic={'a': 10, 'b':20}
+		# function(**dic) it is similar to function(a=10, b=20)
+
 		self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 		post = models.Post.objects.get(title='My fourth post')
@@ -93,7 +113,10 @@ class PostViewTest(APITestCase):
 
 		self.assertTrue(models.Post.objects.filter(pk=post_id).exists())
 
-		response = self.client.delete(reverse('post-detail', args={post_id}))
+		response = self.client.delete(
+			reverse('post-detail', args={post_id}),
+			**self.auth_headers
+		)
 		self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
 		response = self.client.get(reverse('post-detail', args={post_id}))

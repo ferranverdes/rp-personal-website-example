@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'rest_framework',
+	'rest_framework.authtoken',
 	'apps.rest_api'
 ]
 
@@ -120,3 +121,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Setting the authentication scheme REST framework will attempt to authenticate
+# with each class in the list, and will set request.user and request.auth using
+# the return value of the first class that successfully authenticates.
+# If no class authenticates, request.user will be set to an instance of
+# django.contrib.auth.models.AnonymousUser, and request.auth will be set to None.
+REST_FRAMEWORK = {
+	'DEFAULT_AUTHENTICATION_CLASSES': [
+		'rest_framework.authentication.TokenAuthentication'
+	],
+}
