@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+	'social_django',
+	'apps.oauth2'
 ]
 
 MIDDLEWARE = [
@@ -118,3 +120,38 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Python Social Auth is useful to easily setup social authentication and authorization
+# mechanism for Python projects, like OAuth 2.
+# https://python-social-auth.readthedocs.io/en/latest/configuration/django.html
+#
+# Defining what desired authentication provider we want to use
+AUTHENTICATION_BACKENDS = (
+	# 'social_core.backends.open_id.OpenIdAuth',
+    # 'social_core.backends.google.GoogleOpenId',
+    'social_core.backends.google.GoogleOAuth2',
+    # 'social_core.backends.google.GoogleOAuth',
+    # 'social_core.backends.twitter.TwitterOAuth',
+    # 'social_core.backends.yahoo.YahooOpenId',
+    # ...
+    'django.contrib.auth.backends.ModelBackend',
+	# ModelBackend allows users to login by username/password method.
+)
+
+# Defining Google OAuth2 Key and Secret obtained in the credentials generation
+# process (from Google Cloud Platform). This keys must be saved in a configuration
+# file that is not commited by git, following the commom patterns.
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '868262872731-eapeoigflesbvkmt10ebkoel4s41l7d1.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'DF4wHx3A6bWxs-OTtK5yqabv'
+
+# The social-app-django library uses the LOGIN_URL to redirect the user to the
+# Google authentication page.
+LOGIN_URL = '/auth/login/google-oauth2/'
+
+# In case you need a custom namespace, this setting is also needed:
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+# LOGIN_REDIRECT_URL and LOGOUT_REDIRECT_URL set the URLs where the user will be
+# redirected after the login and logout events, respectively.
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
