@@ -134,7 +134,7 @@ AUTHENTICATION_BACKENDS = (
     # 'social_core.backends.twitter.TwitterOAuth',
     # 'social_core.backends.yahoo.YahooOpenId',
     # ...
-    'django.contrib.auth.backends.ModelBackend',
+    # 'django.contrib.auth.backends.ModelBackend',
 	# ModelBackend allows users to login by username/password method.
 )
 
@@ -144,14 +144,5 @@ AUTHENTICATION_BACKENDS = (
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '868262872731-eapeoigflesbvkmt10ebkoel4s41l7d1.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'DF4wHx3A6bWxs-OTtK5yqabv'
 
-# The social-app-django library uses the LOGIN_URL to redirect the user to the
-# Google authentication page.
-LOGIN_URL = '/auth/login/google-oauth2/'
-
-# In case you need a custom namespace, this setting is also needed:
-SOCIAL_AUTH_URL_NAMESPACE = 'social'
-
-# LOGIN_REDIRECT_URL and LOGOUT_REDIRECT_URL set the URLs where the user will be
-# redirected after the login and logout events, respectively.
+# LOGIN_REDIRECT_URL set the URL where the user will be redirected after the login event.
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
