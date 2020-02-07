@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+	'apps.account',
 ]
 
 MIDDLEWARE = [
@@ -120,5 +121,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Built-in User Authentication System
-LOGIN_REDIRECT_URL = 'home' # home is the name of the url defined in the file urls.py
-LOGOUT_REDIRECT_URL = 'home' # home is the name of the url defined in the file urls.py
+LOGIN_REDIRECT_URL = 'account'
+LOGOUT_REDIRECT_URL = '/'
