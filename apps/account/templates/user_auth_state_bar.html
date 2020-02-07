@@ -2,7 +2,8 @@
 	{% if user.is_authenticated %}
 	<a class="btn btn-success" href="{% url 'account' %}">My Profile</a>
 	<a class="btn btn-danger" href="{% url 'logout' %}">Logout</a>
-	{% elif request.get_full_path != "/account/login/" %}
+	{% else %}
+	<a class="btn btn-warning" href="{% url 'sign-up' %}">Sign Up</a>
 	<a class="btn btn-primary" href="{% url 'login' %}">Login</a>
 	{% endif %}
 </div>

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="col-10">
+				<form method="post">
+					<h2>Sign up</h2>
+					<form method="post">
+						{% csrf_token %}
+						{{ form.as_p }}
+						<button class="btn btn-warning" type="submit">Sign Up</button>
+					</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
