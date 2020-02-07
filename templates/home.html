@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron">
+  {% if user.is_authenticated %}
+  <p>Hi {{ user.username }} 🙂</p>
+  <p>Now you can see content made just for you</p>
+  <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+  {% else %}
+  <p>You are not logged in</p>
+  <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+  {% endif %}
+</div>
+
+{% endblock %}

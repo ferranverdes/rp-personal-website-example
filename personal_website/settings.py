@@ -54,7 +54,7 @@ ROOT_URLCONF = 'personal_website.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,3 +118,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Built-in User Authentication System
+LOGIN_REDIRECT_URL = 'home' # home is the name of the url defined in the file urls.py
+LOGOUT_REDIRECT_URL = 'home' # home is the name of the url defined in the file urls.py
