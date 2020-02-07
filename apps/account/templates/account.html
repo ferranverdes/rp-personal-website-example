@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Your account{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron">
+  {% if user.is_authenticated %}
+  <p>Hi {{ user.username }} 🙂</p>
+  <p>You can see your account details here</p>
+  {% else %}
+  <p>You are not logged in. Log in to see your profile</p>
+  {% endif %}
+</div>
+
+{% endblock %}

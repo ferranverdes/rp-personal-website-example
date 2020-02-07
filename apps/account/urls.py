@@ -6,5 +6,5 @@ from apps.account.forms import AuthenticationForm
 urlpatterns = [
 	path('login/', LoginView.as_view(authentication_form=AuthenticationForm), name='login'),
 	path('', include('django.contrib.auth.urls')),
-	path('', TemplateView.as_view(template_name='profile.html'), name='account'),
+	path('', TemplateView.as_view(template_name='account.html'), name='account'),
 ]
