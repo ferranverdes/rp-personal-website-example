@@ -123,3 +123,6 @@ STATIC_URL = '/static/'
 # Built-in User Authentication System
 LOGIN_REDIRECT_URL = 'account'
 LOGOUT_REDIRECT_URL = '/'
+
+# Adding AUTH_USER_MODEL tells Django that we are going to use a custom user model
+AUTH_USER_MODEL = 'account.User' # Indicates the model to use in order to represent a User (by default it is 'auth.User')
