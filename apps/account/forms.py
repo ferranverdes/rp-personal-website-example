@@ -21,6 +21,16 @@ class AuthenticationForm(auth_forms.AuthenticationForm):
 		)
 	)
 
+	# Defining custom error message for invalid login.
+	error_messages = {
+        'invalid_login': ("Invalid username and/or password."),
+    }
+
+	# Verify that the user is active before allowing login.
+	def confirm_login_allowed(self, user):
+		if not user.is_active:
+			raise forms.ValidationError("This account is still inactive.", code='inactive',)
+
 class UserCreationForm(auth_forms.UserCreationForm):
 	# A form for creating new users. It includes an additional field not used by default (email).
 	class Meta:
