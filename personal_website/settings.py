@@ -25,8 +25,10 @@ SECRET_KEY = 'guy#+i$1(jtku2t@iyya@ef$6#x-gx(+4t=g1q9tx)nt3i$^mf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+# ALLOWED_HOSTS defines a list of strings representing the host/domain names that
+# this Django site can serve. This is a security measure to prevent HTTP Host header
+# attacks.
+ALLOWED_HOSTS = ['personal-website-example.herokuapp.com']
 
 # Application definition
 
@@ -118,3 +120,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# STATIC_ROOT defines a folder for static files. When Heroku is deploying an
+# application, it runs the command django-admin collectstatic, which bundles and
+# saves all static files in the specified folder. This folder will be in our
+# project's root directory.
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
