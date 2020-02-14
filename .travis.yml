@@ -1,9 +1,15 @@
 language: python
 python:
-  - "3.7"
-
+- '3.7'
 install:
-  - pip install -r requirements.txt
-
+- pip install -r requirements.txt
 script:
-  - python manage.py test
+- python manage.py test
+deploy:
+  provider: heroku
+  api_key:
+    secure: XyyQ3QuNys5v3dNogZrHa50s4j2en28g+RvAwHPuCRxyIZSdIIZSAjQsMoRzH+NZv4RnTwixiJZIToQ7YAc3IByTVjCz5Q+KZCqyOsVbcNX4g2HmA4O+3vAy6mAxQ01/aINt+krTYXFJBhpltKpwlZLl8w5yR5mtEXMMa5izi+TNSNiWjlgtY+yBwDah7tHSK/np1J50OfGDIxlLZ1WhYLdMpACOEsCINlCjjDYp3RXpnx9Boffbf2HzSciuQxq3QQ0lEnazDNfgAKSGR7Tt+MsfyjlE2NIC/XpT+FUwu+oAjK9umn1i2RixGrIDmtjUtOeiq6/ygUCu5NYqAc2Z4Epa5MBo9w0aCUkdv+NTqB07gg7vJsiyTYk8ihATXY43VIiO0b32qWxjCpRuSm7Y+q9IN81WP+ioBcvthH9ZSqtODQ47HKrFJjpBnFBMj4RuXQWmSWflSZ1UFGHXTNFqBGymJ8Wtg9K06AlCESX63pbKd69d0EC7MBbHCt5Oxhjertc8yG+p/8BFkkJ5IHFvoP8r/ZYviaSBjcZlwUPZu15bolLjnNVBCIHmnG2R3YHgqd4IW04uDNuO/0H9gqQUrR/4cjDEtsIKlrrHoF5A7D+wuzisCPi4NpdmTpt/2T/TOk33nhTDYoy0s/huZC1lmiaUmYvFIw4qAu1h/+m2czo=
+  app: personal-website-example
+  on:
+    repo: ferranverdes/rp-personal-website-example
+    branch: master
