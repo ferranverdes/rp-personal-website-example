@@ -14,5 +14,5 @@ Beginner friendly Django project useful to learn the Django basics developing co
 
 It also includes:
 - **Travis CI** configuration. (Follow [this branch](https://github.com/ferranverdes/rp-personal-website-example/tree/travis-ci-integration)).
-- **Dockers** configuration (coming soon).
-- **Heroku** deployment (coming soon).
+- **Dockers** configuration (Refer to [this project](https://github.com/ferranverdes/rp-django-project-skeleton)).
+- **Heroku** deployment (Refer to [this project](https://github.com/ferranverdes/rp-django-project-skeleton)).
